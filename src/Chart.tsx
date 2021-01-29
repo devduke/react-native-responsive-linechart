@@ -120,8 +120,13 @@ const Chart: React.FC<Props> = React.memo((props) => {
     useNativeDriver: true,
     listener: (evt) => {
       // Necessary to debounce function, see https://medium.com/trabe/react-syntheticevent-reuse-889cd52981b6
-      if (evt.nativeEvent.state === State.ACTIVE) {
+      if (evt.nativeEvent.state === State.BEGAN) {
         handleTouchEvent(evt.nativeEvent.x, evt.nativeEvent.y)
+      }
+      if (evt.nativeEvent.state === State.ACTIVE || evt.nativeEvent.state === State.END) {
+        setLastTouch({
+          type: 'touchEnd',
+        });
       }
     },
   })
