@@ -58,8 +58,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.maxby": "^4.6.0",
     "lodash.minby": "^4.6.0",
-    "paths-js": "^0.4.11",
-    "text-to-svg": "^3.1.5"
+    "paths-js": "^0.4.11"
   },
   "jest": {
     "rootDir": "./src",

@@ -1,13 +1,11 @@
 import deepmerge from 'deepmerge'
 import * as React from 'react'
-import { Line, Text, G } from 'react-native-svg'
+import { Text } from 'react-native'
+import { Line, G, ForeignObject } from 'react-native-svg'
 import ChartContext from './ChartContext'
 import { Stroke, Label } from './types'
 import { scalePointToDimensions } from './utils'
 import { calculateTickValues } from './Axis.utils'
-
-const TextToSVG = require('text-to-svg')
-const textToSVG = TextToSVG.loadSync()
 
 type Props = {
   theme?: {
@@ -107,17 +105,26 @@ const HorizontalAxis: React.FC<Props> = (props) => {
                 translateX={labels.label.dx + scalePointToDimensions({ x: value, y: 0 }, viewportDomain, dimensions).x}
                 translateY={dimensions.height - labels.label.dy}
               >
-                <Text
-                  fontSize={labels.label.fontSize}
-                  fontWeight={labels.label.fontWeight}
-                  fontFamily={labels.label.fontFamily}
-                  fill={labels.label.color}
-                  opacity={labels.label.opacity}
-                  textAnchor={labels.label.textAnchor}
-                  rotation={labels.label.rotation}
-                >
-                  {labels.formatter(value)}
-                </Text>
+                <ForeignObject x={0} y={-10}>
+                  <Text style={{
+                    fontFamily: labels.label.fontFamily,
+                    color: labels.label.color,
+                    fontSize: labels.label.fontSize,
+                    textAlign: 'center'
+                  }}>{labels.formatter(value)}</Text>
+                </ForeignObject>
+
+                {/*<Text*/}
+                {/*  fontSize={labels.label.fontSize}*/}
+                {/*  fontWeight={labels.label.fontWeight}*/}
+                {/*  fontFamily={labels.label.fontFamily}*/}
+                {/*  fill={labels.label.color}*/}
+                {/*  opacity={labels.label.opacity}*/}
+                {/*  textAnchor={labels.label.textAnchor}*/}
+                {/*  rotation={labels.label.rotation}*/}
+                {/*>*/}
+                {/*  {labels.formatter(value)}*/}
+                {/*</Text>*/}
               </G>
             )}
           </React.Fragment>
