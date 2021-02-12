@@ -6,6 +6,9 @@ import { Stroke, Label } from './types'
 import { scalePointToDimensions } from './utils'
 import { calculateTickValues } from './Axis.utils'
 
+import TextToSVG from 'text-to-svg'
+const textToSVG = TextToSVG.loadSync()
+
 type Props = {
   theme?: {
     axis?: {
