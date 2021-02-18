@@ -99,29 +99,29 @@ const VerticalAxis: React.FC<Props> = (props) => {
             )}
             {/* Render Label */}
             {labels.visible && (
-              <G translateX={labels.label.dx + dimensions.width} translateY={labels.label.dy + scalePointToDimensions({ x: 0, y: value }, viewportDomain, dimensions).y}>
+              <G translateX={labels.label.dx} translateY={labels.label.dy + scalePointToDimensions({ x: 0, y: value }, viewportDomain, dimensions).y}>
 
-                <ForeignObject x={-25} y={-10}>
+                <ForeignObject x={1} y={-12}>
                   <Text style={{
                     width: 50,
                     fontFamily: labels.label.fontFamily,
                     color: labels.label.color,
                     fontSize: labels.label.fontSize,
-                    textAlign: 'center'
+                    textAlign: 'left'
                   }}>{labels.formatter(value)}</Text>
                 </ForeignObject>
 
-                  {/*<Text*/}
-                  {/*  fontSize={labels.label.fontSize}*/}
-                  {/*  fontWeight={labels.label.fontWeight}*/}
-                  {/*  fontFamily={labels.label.fontFamily}*/}
-                  {/*  fill={labels.label.color}*/}
-                  {/*  opacity={labels.label.opacity}*/}
-                  {/*  textAnchor={labels.label.textAnchor}*/}
-                  {/*  rotation={labels.label.rotation}*/}
-                  {/*>*/}
-                  {/*  {labels.formatter(value)}*/}
-                  {/*</Text>*/}
+                {/*<Text*/}
+                {/*  fontSize={labels.label.fontSize}*/}
+                {/*  fontWeight={labels.label.fontWeight}*/}
+                {/*  fontFamily={labels.label.fontFamily}*/}
+                {/*  fill={labels.label.color}*/}
+                {/*  opacity={labels.label.opacity}*/}
+                {/*  textAnchor={labels.label.textAnchor}*/}
+                {/*  rotation={labels.label.rotation}*/}
+                {/*>*/}
+                {/*  {labels.formatter(value)}*/}
+                {/*</Text>*/}
               </G>
             )}
           </React.Fragment>
