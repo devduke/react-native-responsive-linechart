@@ -101,9 +101,9 @@ const VerticalAxis: React.FC<Props> = (props) => {
             {labels.visible && (
               <G translateX={labels.label.dx + dimensions.width} translateY={labels.label.dy + scalePointToDimensions({ x: 0, y: value }, viewportDomain, dimensions).y}>
 
-                <ForeignObject x={0} y={-12}>
+                <ForeignObject x={0} y={0}>
                   <Text style={{
-                    width: 50,
+                    // width: 50,
                     fontFamily: labels.label.fontFamily,
                     color: labels.label.color,
                     fontSize: labels.label.fontSize,
