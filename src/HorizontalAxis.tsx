@@ -105,8 +105,9 @@ const HorizontalAxis: React.FC<Props> = (props) => {
                 translateX={labels.label.dx + scalePointToDimensions({ x: value, y: 0 }, viewportDomain, dimensions).x}
                 translateY={dimensions.height - labels.label.dy}
               >
-                <ForeignObject x={0} y={-10}>
+                <ForeignObject x={-25} y={-10}>
                   <Text style={{
+                    width: 50,
                     fontFamily: labels.label.fontFamily,
                     color: labels.label.color,
                     fontSize: labels.label.fontSize,

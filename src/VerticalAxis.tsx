@@ -1,6 +1,7 @@
 import deepmerge from 'deepmerge'
 import * as React from 'react'
-import { G, Line, Text } from 'react-native-svg'
+import { Text } from 'react-native'
+import { ForeignObject, G, Line } from 'react-native-svg'
 import ChartContext from './ChartContext'
 import { Label, Stroke } from './types'
 import { scalePointToDimensions } from './utils'
@@ -99,17 +100,28 @@ const VerticalAxis: React.FC<Props> = (props) => {
             {/* Render Label */}
             {labels.visible && (
               <G translateX={labels.label.dx + dimensions.width} translateY={labels.label.dy + scalePointToDimensions({ x: 0, y: value }, viewportDomain, dimensions).y}>
-                <Text
-                  fontSize={labels.label.fontSize}
-                  fontWeight={labels.label.fontWeight}
-                  fontFamily={labels.label.fontFamily}
-                  fill={labels.label.color}
-                  opacity={labels.label.opacity}
-                  textAnchor={labels.label.textAnchor}
-                  rotation={labels.label.rotation}
-                >
-                  {labels.formatter(value)}
-                </Text>
+
+                <ForeignObject x={-25} y={-10}>
+                  <Text style={{
+                    width: 50,
+                    fontFamily: labels.label.fontFamily,
+                    color: labels.label.color,
+                    fontSize: labels.label.fontSize,
+                    textAlign: 'center'
+                  }}>{labels.formatter(value)}</Text>
+                </ForeignObject>
+
+                  {/*<Text*/}
+                  {/*  fontSize={labels.label.fontSize}*/}
+                  {/*  fontWeight={labels.label.fontWeight}*/}
+                  {/*  fontFamily={labels.label.fontFamily}*/}
+                  {/*  fill={labels.label.color}*/}
+                  {/*  opacity={labels.label.opacity}*/}
+                  {/*  textAnchor={labels.label.textAnchor}*/}
+                  {/*  rotation={labels.label.rotation}*/}
+                  {/*>*/}
+                  {/*  {labels.formatter(value)}*/}
+                  {/*</Text>*/}
               </G>
             )}
           </React.Fragment>
